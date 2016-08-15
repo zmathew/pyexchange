@@ -354,8 +354,8 @@ def new_event(event):
   else:
     calendar_node.append(T.ReminderIsSet('false'))
 
-  calendar_node.append(T.Start(start.strftime(EXCHANGE_DATETIME_FORMAT)))
-  calendar_node.append(T.End(end.strftime(EXCHANGE_DATETIME_FORMAT)))
+  calendar_node.append(T.Start(start.isoformat()))
+  calendar_node.append(T.End(end.isoformat()))
 
   if event.is_all_day:
     calendar_node.append(T.IsAllDayEvent('true'))
