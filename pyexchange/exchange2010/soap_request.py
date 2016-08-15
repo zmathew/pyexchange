@@ -17,7 +17,7 @@ NAMESPACES = {u'm': MSG_NS, u't': TYPE_NS, u's': SOAP_NS}
 M = ElementMaker(namespace=MSG_NS, nsmap=NAMESPACES)
 T = ElementMaker(namespace=TYPE_NS, nsmap=NAMESPACES)
 
-EXCHANGE_DATETIME_FORMAT = u"%Y-%m-%dT%H:%M:%S%z"
+EXCHANGE_DATETIME_FORMAT = u"%Y-%m-%dT%H:%M:%SZ"
 EXCHANGE_DATE_FORMAT = u"%Y-%m-%d"
 
 DISTINGUISHED_IDS = (
