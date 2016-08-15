@@ -17,7 +17,7 @@ NAMESPACES = {u'm': MSG_NS, u't': TYPE_NS, u's': SOAP_NS}
 M = ElementMaker(namespace=MSG_NS, nsmap=NAMESPACES)
 T = ElementMaker(namespace=TYPE_NS, nsmap=NAMESPACES)
 
-EXCHANGE_DATETIME_FORMAT = u"%Y-%m-%dT%H:%M:%SZ"
+EXCHANGE_DATETIME_FORMAT = u"%Y-%m-%dT%H:%M:%S%z"
 EXCHANGE_DATE_FORMAT = u"%Y-%m-%d"
 
 DISTINGUISHED_IDS = (
@@ -332,8 +332,8 @@ def new_event(event):
 
   id = T.DistinguishedFolderId(Id=event.calendar_id) if event.calendar_id in DISTINGUISHED_IDS else T.FolderId(Id=event.calendar_id)
 
-  start = convert_datetime_to_utc(event.start)
-  end = convert_datetime_to_utc(event.end)
+  start = event.start
+  end = event.end
 
   root = M.CreateItem(
     M.SavedItemFolderId(id),
