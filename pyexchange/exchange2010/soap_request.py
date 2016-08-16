@@ -360,7 +360,8 @@ def new_event(event):
   if event.is_all_day:
     calendar_node.append(T.IsAllDayEvent('true'))
 
-  calendar_node.append(T.Location(event.location or u''))
+  if event.location:
+    calendar_node.append(T.Location(event.location or u''))
 
   if event.required_attendees:
     calendar_node.append(resource_node(element=T.RequiredAttendees(), resources=event.required_attendees))
@@ -402,6 +403,11 @@ def new_event(event):
         )
       )
     )
+
+  if event.start_timezone:
+    calendar_node.append(T.StartTimeZone(Id=event.start_timezone))
+  if event.end_timezone:
+    calendar_node.append(T.EndTimeZone(Id=event.end_timezone))
 
   return root
 
